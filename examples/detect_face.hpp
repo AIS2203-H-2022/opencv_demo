@@ -11,7 +11,7 @@
 
 
 std::optional<cv::Rect> detect_face(
-        cv::Mat &img,
+        const cv::Mat &img,
         cv::CascadeClassifier &cascade,
         std::optional<cv::CascadeClassifier> nestedCascade = std::nullopt) {
 
