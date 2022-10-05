@@ -47,7 +47,19 @@ int main() {
             capture >> image;
 
             if (cascade) {
-                detect_face(image, *cascade, nestedCascade);
+                auto result = detect_face(image, *cascade, nestedCascade);
+                std::string displayText;
+                if (result) {
+                    displayText = "Detected face at x=" + std::to_string(result->x) + ", y=" + std::to_string(result->y);
+                } else {
+                    displayText = "No face detected";
+                }
+                putText(image, displayText,
+                        cv::Point(0, image.rows-5),
+                        FONT_HERSHEY_PLAIN,
+                        1.0,
+                        CV_RGB(118, 185, 0), //font color
+                        1);
             }
 
             imshow("Display Image", image);
